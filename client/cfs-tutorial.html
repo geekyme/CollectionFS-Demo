@@ -1,0 +1,23 @@
+<head>
+    <title>cfs-tutorial</title>
+</head>
+
+<body>
+	{{>images}}
+</body>
+
+<template name="images">
+	{{cfsFileInput imageCollection metadata multiple="multiple"}}
+	{{#if cfsIsUploading}}
+		Upload Progress: {{cfsUploadProgress}}%
+	{{/if}}
+	{{#each images}}
+		{{#if cfsIsUploading}}
+		{{else}}
+			<img class="scaleImage" src="{{url copy='thumbnail'}}">
+			{{cfsDeleteButton content="Delete This Image" class="btn"}}
+			{{cfsDownloadButton class="btn"}}
+		{{/if}}
+	{{/each}}
+</template>
+
